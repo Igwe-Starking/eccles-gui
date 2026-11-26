@@ -14,7 +14,7 @@ jobs:
     env:
       CC: ${{ matrix.cc }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: sudo apt-get update && sudo apt-get install -y python3-pil fonts-dejavu-core g++
       - name: Lint (C99, -Wpedantic -Wconversion)
         run: make lint
@@ -43,5 +43,5 @@ jobs:
   cmake:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - run: cmake -S . -B build -DECCLES_GUI_BUILD_TESTS=ON -DECCLES_GUI_DEFINES="ECCLES_GUI_MAX_WIDGETS=64" && cmake --build build && ctest --test-dir build --output-on-failure
