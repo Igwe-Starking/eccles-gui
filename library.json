@@ -1,0 +1,27 @@
+{
+  "name": "EcclesGUI",
+  "version": "1.0.0",
+  "description": "Ultra low RAM UI engine for microcontrollers: 2D widgets and a software 3D renderer, no framebuffer, no heap, no floats. Plain C99.",
+  "keywords": "gui, ui, display, lcd, 3d, rasteriser, touch, embedded, esp32, stm32, rp2040, rgb565",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igwe-starking/eccles-gui.git"
+  },
+  "authors": [
+    {
+      "name": "Nwobodo Ecclesiastes",
+      "email": "igwestarking21@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "frameworks": "*",
+  "platforms": "*",
+  "build": {
+    "srcDir": "src",
+    "includeDir": "src",
+    "flags": ["-Iconfig"]
+  },
+  "export": {
+    "include": ["src", "config", "docs", "examples", "tools", "tests", "assets", "library.json", "library.properties", "keywords.txt", "README.md", "LICENSE", "CHANGELOG.md"]
+  }
+}

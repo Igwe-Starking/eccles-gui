@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  host:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cc: [gcc, clang]
+    env:
+      CC: ${{ matrix.cc }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y python3-pil fonts-dejavu-core g++
+      - name: Lint (C99, -Wpedantic -Wconversion)
+        run: make lint
+      - name: Tests under ASan + UBSan
+        run: make test-asan
+      - name: Configuration matrix
+        run: make test-all
+      - name: Fuzz
+        run: make fuzz
+      - name: Generated files are current
+        run: |
+          make gen-check
+      - name: Platform code paths
+        run: make mocks
+      - name: C++ header
+        run: make cxx
+      - name: Asset converters
+        run: make tools-test
+      - name: Examples
+        run: |
+          make examples
+          make bench
+      - name: Code size
+        run: make size
+
+  cmake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmake -S . -B build -DECCLES_GUI_BUILD_TESTS=ON -DECCLES_GUI_DEFINES="ECCLES_GUI_MAX_WIDGETS=64" && cmake --build build && ctest --test-dir build --output-on-failure

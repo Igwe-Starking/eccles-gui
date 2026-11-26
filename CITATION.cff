@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use eccles_gui in your work, please cite it as below."
+title: "Eccles GUI"
+abstract: "Ultra low RAM UI engine for microcontrollers: band rendering of a widget tree with dirty rectangles, anti aliased 2D drawing and a fixed point software 3D rasteriser. Plain C99, no heap, no floats."
+type: software
+authors:
+  - family-names: Nwobodo
+    given-names: Ecclesiastes
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/igwe-starking/eccles-gui"
+keywords:
+  - embedded
+  - gui
+  - microcontroller
+  - 3d
+  - esp32

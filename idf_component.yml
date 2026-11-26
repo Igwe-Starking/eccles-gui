@@ -1,0 +1,4 @@
+version: "1.0.0"
+description: "Ultra low RAM UI engine: 2D widgets and a software 3D renderer, no framebuffer, no heap, no floats. Plain C99."
+url: https://github.com/igwe-starking/eccles-gui
+license: MIT
